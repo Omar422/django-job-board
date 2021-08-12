@@ -14,6 +14,10 @@ JOB_TYPE = (
     ('Part Time', 'Part Time'),
 )
 
+def image_upload(instance, filename):
+    imagename, extension = filename.split('.')
+    return "jobs/%s.%s"%(instance.id, extension)
+
 class Job(models.Model):
     title = models.CharField(max_length=100)
     # location
@@ -24,6 +28,7 @@ class Job(models.Model):
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=1)
     category = models.ForeignKey('Category', on_delete=models.CASCADE) # use single qutue because model after used
+    image = models.ImageField(upload_to=image_upload)
 
     def __str__(self):
         return self.title
