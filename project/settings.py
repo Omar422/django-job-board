@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'bootstrap4',
     'contact',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
